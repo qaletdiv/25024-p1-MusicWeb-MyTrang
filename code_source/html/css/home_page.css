@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #252525;
+    color: white;
+    font-size: 20px;
+}
+
+.header{
+    padding: 10px;
+    height: 92px;
+    width: 100w;
+    background-color: #BBA5E6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    margin: 0px;
+    height: 65px;
+    width: 65px;
+    object-fit: cover;
+}
