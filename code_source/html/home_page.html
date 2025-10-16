@@ -4,22 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage - Music Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="./css/home_page.css">
 </head>
 <body>
     <header class="header">
         <div class="logo-place">
             <img src="./image/music-logo.png" alt="logo_image" class="logo">
-            <span><strong>Music</strong><em> Player</em></span>
+            <span class="logo-name"><strong>Music</strong><em> Player</em></span>
         </div>
         <nav class="nav-bar">
             <a href="#">Home</a>
             <a href="#">Trending</a>
             <a href="#">Library</a>
         </nav>
-        <input class="search-bar">
-        <p class="name-account"></p>
-        <img src="./image/music-logo.png" class="avatar-account" alt="avatar">
+        <div class="search-bar">
+            <input class="searchBar" type="text" placeholder="Simply lovely melody">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div class="account-place">
+            <p class="name-account">TrangHoang</p>
+            <img src="./image/music-logo.png" class="avatar-account" alt="avatar">
+        </div>
     </header>
     <main class="songs-container">
         <div class="popular-songs-list">
