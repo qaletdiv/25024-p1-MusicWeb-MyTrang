@@ -1,0 +1,250 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #252525;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+}
+
+.logo-place{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-name{
+    margin: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 29px;
+}
+
+.header{
+    position: fixed;
+    padding: 10px;
+    height: 92px;
+    width: 100%;
+    background-color: #BBA5E6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    
+}
+
+.logo{
+    margin: 0px;
+    height: 65px;
+    width: 65px;
+    object-fit: cover;
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+.nav-bar a{
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar a:hover{
+    transition: scale(1.2);
+    font-weight: 700;
+}
+
+.search-bar{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.searchBar{
+    margin: 20px;
+    height: 40px;
+    width: 460px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 15px;   
+}
+
+.search-bar button {
+  border: none;
+  background: white;
+  cursor: pointer;
+  color: #333;
+  font-size: 16px;
+  position: absolute;
+  right: 35px;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.search-bar button:hover{
+    color: black;
+    background-color: rgb(216, 216, 216);
+    border-radius: 360px;
+}
+
+.account-place{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-wrap: wrap;
+    gap: 8px;
+}
+
+.name-account{
+    padding: 10px;
+    display: block;
+    text-align: center;
+}
+
+.avatar-account{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+}
+
+@media(max-width: 1400px){
+    .nav-bar{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 30px;
+    }
+    .searchBar{
+        margin: 20px;
+        height: 40px;
+        width: 360px;
+        border: none;
+        outline: none;
+        border-radius: 30px;
+        font-size: 20px;
+        padding: 15px;   
+    }
+}
+
+@media(max-width: 1200px){
+    .nav-bar{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 20px;
+    }
+    .searchBar{
+        margin: 20px;
+        height: 40px;
+        width: 360px;
+        border: none;
+        outline: none;
+        border-radius: 30px;
+        font-size: 20px;
+        padding: 15px;   
+    }
+    .logo-name{
+        margin: 10px;
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+    }
+    .name-account{
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 992px){
+    .nav-bar{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 20px;
+    }
+    .searchBar{
+        margin: 20px;
+        height: 40px;
+        width: 360px;
+        border: none;
+        outline: none;
+        border-radius: 30px;
+        font-size: 20px;
+        padding: 15px;   
+    }
+    .logo-name{
+        display: none;
+    }
+    .name-account{
+        display: none;
+    }
+}
+
+
+@media(max-width: 768px){
+    .nav-bar{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 20px;
+    }
+    .searchBar{
+        display: none;  
+    }
+    .logo-name{
+        display: none;
+    }
+    .name-account{
+        display: none;
+    }
+    .search-bar {
+        position: absolute;
+        right: 70px; 
+        top: 50%;
+    }
+    .search-bar button {
+        color: #333;
+        font-size: 18px;
+        padding: 8px;
+    }
+}
+
+.footer{
+    margin: 10px;
+    padding: 10px;
+    height: 150px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d2d2d;
+}
+.footer-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.footer-element{
+    margin-right: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-element a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer-element a:hover {
+    font-weight: 600;
+}
