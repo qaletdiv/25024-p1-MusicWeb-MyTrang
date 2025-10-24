@@ -1,0 +1,36 @@
+{
+  "popularSongs": [
+    {
+      "songName": "Lemon",
+      "singerName": "Kenshi Yonezu",
+      "img": "./image/lemon.jpg"
+    },
+    {
+      "songName": "Shape of You",
+      "singerName": "Ed Sheeran",
+      "img": "./image/shapeofyou.jpg"
+    }
+  ],
+  "artists": [
+    {
+      "name": "Kenshi Yonezu",
+      "img": "./image/kenshiyonezu.jpg"
+    },
+    {
+      "name": "Ed Sheeran",
+      "img": "./image/edsheeran.jpg"
+    }
+  ],
+  "song": [
+    {
+      "songName": "Lemon",
+      "singerName": "Kenshi Yonezu",
+      "img": "./image/lemon.jpg"
+    },
+    {
+      "songName": "Shape of You",
+      "singerName": "Ed Sheeran",
+      "img": "./image/shapeofyou.jpg"
+    }
+  ]
+}

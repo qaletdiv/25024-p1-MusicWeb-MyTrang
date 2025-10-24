@@ -189,7 +189,6 @@ body{
     }
 }
 
-
 @media(max-width: 768px){
     .nav-bar{
         display: flex;
@@ -226,6 +225,9 @@ body{
     justify-content: space-around;
     align-items: center;
     background-color: #2d2d2d;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 .footer-content{
     display: flex;

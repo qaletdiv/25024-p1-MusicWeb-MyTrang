@@ -13,4 +13,7 @@ burger.addEventListener('click', () => {
     console.log("burger click");
 });
 
+//Account 
+let isLogIn = false;
+
 
