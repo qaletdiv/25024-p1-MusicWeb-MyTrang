@@ -30,7 +30,7 @@ body{
     position: fixed;
     padding: 10px;
     height: 92px;
-    width: 100%;
+    width: 100vw;
     background-color: #BBA5E6;
     display: flex;
     justify-content: space-between;
@@ -218,12 +218,12 @@ body{
 }
 
 .footer{
-    margin: 10px;
     padding: 10px;
     height: 150px;
+    width: 100vw;
     font-size: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #2d2d2d;
 }
@@ -247,4 +247,74 @@ body{
 
 .footer-element a:hover {
     font-weight: 600;
+}
+
+.burger{
+    width: 30px;
+    height: 22px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.burger span{
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: black;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+@media(max-width: 576px){
+    .header{
+        height: 60px;
+    }
+
+    .nav-bar{
+        position: absolute;
+        top: 92px;
+        right: -200px;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        background: #2d2d2d;
+        padding: 15px;
+        color: white;
+        transition: 0.3s;
+    }
+    .nav-bar a{
+        margin: 10px 0;
+    }
+    .burger{
+        display: flex;
+        position: absolute;
+        left: 100px;
+    }
+    .nav-bar.active {
+        right: 0;
+    }
+    .logo{
+        margin: 0px;
+        height: 45px;
+        width: 45px;
+        object-fit: cover;
+    }
+    .avatar-account{
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+    }
+    .search-bar button {
+        border: none;
+        background: white;
+        cursor: pointer;
+        color: #333;
+        font-size: 16px;
+        position: absolute;
+        right: 15px;
+        padding: 5px;
+        border-radius: 50%;
+        text-align: center;
+    }
 }

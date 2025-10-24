@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#popularSong{
+    height: 200px;
+    width: 200px;
+}
+.song-img{
+    object-fit: cover;
+    border-radius: 20px;
+}
+.songs-container{
+    padding: 150px 0;
+}
+.popular-songs-list{
+    display: flex;
+    gap: 30px;
+    margin: 30px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.popular-songs-container{
+    display: flex;
+    gap: 20px;
+    width: 1070px;
+    overflow:hidden;
+}
+
+.arrow-btn{
+    height: 70px;
+    width: 70px;
+    font-size: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 100%;
+}
+
+.arrow-btn:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
