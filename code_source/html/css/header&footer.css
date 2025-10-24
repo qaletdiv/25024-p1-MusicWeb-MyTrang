@@ -273,18 +273,18 @@ body{
 
     .nav-bar{
         position: absolute;
-        top: 92px;
+        top: 70px;
         right: -200px;
         width: 200px;
         display: flex;
         flex-direction: column;
-        background: #2d2d2d;
+        background: rgba(0, 0, 0, 0.5);
         padding: 15px;
-        color: white;
         transition: 0.3s;
     }
     .nav-bar a{
         margin: 10px 0;
+        color: white;
     }
     .burger{
         display: flex;
