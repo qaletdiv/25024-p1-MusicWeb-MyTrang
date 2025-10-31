@@ -54,3 +54,18 @@
 .box-signup button:hover{
     background-color: rgb(198, 163, 218);
 }
+
+.box-signup span{
+    font-size: 26px;
+    text-align: center;
+}
+
+.box-signup span a{
+    text-decoration: none;
+    color: rgb(210, 163, 218);
+}
+
+.box-signup span a:hover{
+    color: rgb(229, 201, 245);
+    font-weight: 700;
+}
