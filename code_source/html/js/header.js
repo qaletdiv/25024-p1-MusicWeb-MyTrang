@@ -10,10 +10,13 @@ const burger = document.querySelector(".burger");
 burger.addEventListener('click', () => {
     burger.classList.toggle('active');
     navBar.classList.toggle('active');
-    console.log("burger click");
 });
 
 //Account 
-let isLogIn = false;
-
+const burgerLogedIn = document.querySelector("#loged-in");
+const avaAccount = document.querySelector(".avatar-account");
+avaAccount.addEventListener('click', () => {
+    avaAccount.classList.toggle('active');
+    burgerLogedIn.classList.toggle('active');
+});
 

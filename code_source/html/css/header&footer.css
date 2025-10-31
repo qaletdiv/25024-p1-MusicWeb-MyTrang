@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 body{
     background-color: #252525;
     color: white;
@@ -118,6 +119,8 @@ body{
     height: 60px;
     width: 60px;
     object-fit: cover;
+    position: relative;
+    cursor: pointer;
 }
 
 @media(max-width: 1400px){
@@ -225,7 +228,6 @@ body{
     justify-content: space-around;
     align-items: center;
     background-color: #2d2d2d;
-    position: absolute;
     bottom: 0;
     right: 0;
 }
@@ -320,3 +322,30 @@ body{
         text-align: center;
     }
 }
+
+#loged-in.active{
+    right: 0;
+    display: flex;
+}
+
+#loged-in{
+    top: 60px;
+    right: 10px;
+    width: 30px;
+    height: 22px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#loged-in a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
