@@ -1,0 +1,112 @@
+#premium-plans {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+#premium-plans h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--text-white);
+}
+
+.plans-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.plan-card {
+    background-color: #181818;
+    padding: 40px 30px;
+    border-radius: 15px;
+    width: 300px;
+    border: 1px solid #282828;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
+}
+
+.plan-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-white);
+}
+
+.plan-card .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.plan-card .price span {
+    font-size: 1rem;
+    color: var(--text-gray);
+}
+
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.plan-card li {
+    color: var(--text-gray);
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.plan-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.select-plan-btn {
+    background-color: var(--primary-color);
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.select-plan-btn:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+}
+
+.plan-card:last-child {
+    border: 2px solid var(--premium-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card:last-child::after {
+    content: "BEST VALUE";
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background-color: var(--premium-gold);
+    color: black;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+}

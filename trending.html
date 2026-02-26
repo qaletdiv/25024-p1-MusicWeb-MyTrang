@@ -23,8 +23,25 @@
     <main id="app">
         <section id="trending">
             <h2>Top Trending</h2>
+            <div class="filter-area" style="margin-bottom: 20px; display: flex; gap: 10px;">
+                <select id="filter-country" style="padding: 5px 10px; border-radius: 5px; background: #282828; color: white;">
+                    <option value="all">All countries</option>
+                    <option value="vn">Viet Nam</option>
+                    <option value="usuk">US-UK</option>
+                </select>
+                <select id="filter-genre" style="padding: 5px 10px; border-radius: 5px; background: #282828; color: white;">
+                    <option value="all">All types</option>
+                    <option value="pop">Pop</option>
+                    <option value="rock">Rock</option>
+                </select>
+            </div>
             <div id="song-list">
 
+            </div>
+            <div id="pagination" style="margin-top: 30px; display: flex; justify-content: center; align-items: center; gap: 15px;">
+                <button id="prev-page" class="premium-btn" style="padding: 5px 15px;">Prev</button>
+                <span id="page-info" style="color: var(--text-gray);">Trang 1</span>
+                <button id="next-page" class="premium-btn" style="padding: 5px 15px;">Next</button>
             </div>
         </section>
     </main>

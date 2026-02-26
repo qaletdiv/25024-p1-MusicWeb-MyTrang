@@ -89,7 +89,7 @@ export function checkLoginStatus() {
         authArea.innerHTML = `
             <span>
                 <div id="user-place">
-                    <a href="profile.html" id="user-name">${user.username}</a>
+                    <a href="profile.html" id="user-name" style="color: white;">${user.username}</a>
                     ${!isPremium ? '<button id="btn-upgrade" class="premium-btn">Upgrade Premium</button>' : '<span id="badge-vip">Premium member</span>'}
                     <button id="btn-logout">Log out</button>
                 </div>
@@ -101,7 +101,7 @@ export function checkLoginStatus() {
             window.location.reload();
         });
     } else {
-        authArea.innerHTML = `<a href="login.html">Log in</a> <a href="register.html">Register</a>`;
+        authArea.innerHTML = `<a href="login.html" style="color: white;">Log in</a> <a href="register.html" style="color: white;">Register</a>`;
     }
 }
 

@@ -1,0 +1,35 @@
+.about-main {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.intro-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    line-height: 1.8;
+    transition: transform 0.3s ease;
+}
+
+.intro-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.intro-box p {
+    color: #e0e0e0;
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+footer {
+    margin-top: 0;
+}

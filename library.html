@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/library.css">
 </head>
 <body>
     <header>
@@ -20,14 +21,28 @@
         <div id="auth-area"></div>
     </header>
 
-    <main id="app">
-        <section id="trending">
-            <h2>Favorites</h2>
-            <div id="song-list">
-                No melodies added yet!
+    <main id="library">
+        <section id="library-sections">
+            <div class="lib-block">
+                <h2>Your Favorites ❤️</h2>
+                <div id="song-list">No melodies added yet!</div>
+            </div>
+
+            <div class="lib-block">
+                <h2>Your Playlists 📂</h2>
+                <button id="btn-create-playlist" class="premium-btn">+ Create New Playlist</button>
+                <div id="playlist-list">
+                    </div>
+            </div>
+
+            <div class="lib-block" id="download-section">
+                <h2>Downloads ⬇️</h2>
+                <div id="download-list">
+                    </div>
             </div>
         </section>
     </main>
+
     <div id="player-bar" class="current-song-info" style="display: none;">
         <img id="player-cover" src="" alt="">
         <div>
@@ -58,3 +73,13 @@
 </body>
 
 </html>
+
+<div id="add-song-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 400px; max-height: 500px; overflow-y: auto;">
+        <h3>Select from your Favorites</h3>
+        <p style="font-size: 0.8rem; margin-bottom: 15px;">Only songs in your Library are shown here</p>
+        <div id="fav-songs-to-add">
+        </div>
+        <button id="close-add-modal" style="margin-top: 20px; width: 100%; padding: 10px;">Close</button>
+    </div>
+</div>

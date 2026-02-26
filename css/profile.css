@@ -1,0 +1,115 @@
+body {
+    background-color: var(--bg-dark);
+}
+
+h2 {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 2.5rem;
+    color: var(--text-white);
+}
+
+#profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#personal-information, 
+#personal-payment {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #282828;
+}
+
+h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+#personal-information strong {
+    color: var(--text-gray);
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+#personal-information p {
+    font-size: 1.2rem;
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+#current-premium-card {
+    background: linear-gradient(135deg, #282828 0%, #121212 100%);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--premium-gold);
+    margin-bottom: 25px;
+}
+
+#current-premium-card p {
+    display: inline-block;
+    margin-left: 10px;
+    color: var(--text-white);
+}
+
+#history-packets {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.packet-card-item {
+    background-color: #242424;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.packet-name {
+    color: var(--premium-gold);
+}
+
+.packet-begin, 
+.packet-expiry {
+    color: var(--text-gray);
+}
+
+#btn-logout {
+    background-color: transparent;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+    align-self: center;
+    margin-top: 20px;
+}
+
+#btn-logout:hover {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.personal-payment .premium-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}

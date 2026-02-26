@@ -1,4 +1,4 @@
-import { playSong } from './components/core.js';
+import { playSong, saveUserStatus } from './components/core.js';
 
 const params = new URLSearchParams(window.location.search);
 const songId = params.get('id');
@@ -22,6 +22,10 @@ if (song) {
     document.getElementById('btn-download').onclick = () => {
         if (currentUser?.role === 'premium') {
             alert("Downloading: " + song.title + "...");
+            let downloadedSongs = currentUser.downloadedSongs || [];
+            downloadedSongs.push(String(song.id));
+            currentUser.downloadedSongs = downloadedSongs;
+            saveUserStatus(currentUser);
         } else {
             alert("Download feature is only for Premium members!");
             window.location.href = 'premium.html';

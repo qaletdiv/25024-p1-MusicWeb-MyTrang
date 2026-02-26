@@ -8,6 +8,8 @@ const initialSongs = [
         src: "assets/music/1.ogg",
         isPremium: false,
         views: 0,
+        country: "vn",
+        genre: "pop",
     },
     {
         id: 2,
@@ -18,6 +20,8 @@ const initialSongs = [
         src: "assets/music/2.ogg",
         isPremium: true,
         views: 0,
+        country: "usuk",
+        genre: "pop",
     },
     {
         id: 3,
@@ -28,6 +32,8 @@ const initialSongs = [
         src: "assets/music/3.ogg",
         isPremium: false,
         views: 0,
+        country: "vn",
+        genre: "rock",
     },
     {
         id: 4,
@@ -38,6 +44,8 @@ const initialSongs = [
         src: "assets/music/4.ogg",
         isPremium: true,
         views: 0,
+        country: "usuk",
+        genre: "rock",
     },
     {
         id: 5,
@@ -48,6 +56,8 @@ const initialSongs = [
         src: "assets/music/5.ogg",
         isPremium: false,
         views: 0,
+        country: "vn",
+        genre: "pop",
     },
 ]
 
