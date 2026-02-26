@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check out</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <a href="index.html" id="logo-image"><img src="assets/logo/logo.png" alt="Music Player"></a>
+            <a href="index.html" id="main-page">Home</a>
+            <a href="library.html" id="library">Library</a>
+            <a href="trending.html" id="trending-page">Trending</a>
+        </nav>
+        <div id="auth-area"></div>
+    </header>
+
+    <main>
+        <h2>Check out</h2>
+        <div class="checkout-container">
+            <div id="order-summary">
+
+            </div>
+            <form id="payment-form">
+                <input type="text" id="card-name" placeholder="Card name" required>
+                <input type="text" id="card-number" placeholder="Card number (16 numbers)" required>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" placeholder="MM/YY" required>
+                    <input type="text" placeholder="CVV" required>
+                </div>
+                <button type="submit">Confirm payment</button>
+            </form>
+        </div>
+    </main>
+    <script type="module" src="js/checkout.js"></script>
+</body>
+</html>

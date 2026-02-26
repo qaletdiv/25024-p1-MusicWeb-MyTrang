@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail page</title>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <a href="index.html" id="logo-image"><img src="assets/logo/logo.png" alt="Music Player"></a>
+            <a href="index.html" id="main-page">Home</a>
+            <a href="library.html" id="library">Library</a>
+            <a href="trending.html" id="trending-page">Trending</a>
+        </nav>
+        <div id="auth-area"></div>
+    </header>
+
+    <main class="detail-page">
+        <div class="song-detail-container">
+            <div class="song-poster">
+                <img id="detail-cover" src="" alt="Cover">
+            </div>
+            
+            <div class="song-info-content">
+                <h1 id="detail-title">Loading...</h1>
+                <h3 id="detail-artist">Artist Name</h3>
+                <p>Album: <span id="detail-album">N/A</span></p>
+                
+                <div class="detail-actions">
+                    <button id="btn-play-detail" class="main-btn">Play Now ▶</button>
+                    <button id="btn-download" class="secondary-btn">Download ⬇</button>
+                </div>
+
+                <div class="lyrics-section">
+                    <h4>Lyrics</h4>
+                    <div id="detail-lyrics">
+                        No lyrics available.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <audio id="main-audio" src=""></audio>
+    <script type="module" src="js/detail.js"></script>
+</body>
+</html>

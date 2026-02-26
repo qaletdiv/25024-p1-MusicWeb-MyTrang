@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <a href="index.html" id="logo-image"><img src="assets/logo/logo.png" alt="Music Player"></a>
+            <a href="index.html" id="main-page">Home</a>
+            <a href="library.html" id="library">Library</a>
+            <a href="trending.html" id="trending-page">Trending</a>
+        </nav>
+        <div id="auth-area"></div>
+    </header>
+    <h2>Profile</h2>
+    <div id="profile-container">
+        <div id="personal-information">
+            <h3>Personal information</h3>
+            <strong>Name:</strong><p id="profile-user-name"></p>
+            <strong>Email:</strong><p id="profile-user-email"></p>
+        </div>
+        <div id="personal-payment">
+            <div id="current-packet">
+                <h3>Payment History</h3>
+                <div id="current-premium-card">
+                    <strong>Packet name:</strong><p id="packet-name"></p>
+                    <strong>Packet price:</strong><p id="packet-price"></p>
+                    <strong>Begin date:</strong><p id="packet-begin"></p>
+                    <strong>Expiry date:</strong><p id="packet-expiry"></p>
+                </div>
+            </div>
+            <h3>History Premium packets</h3>
+            <div id="history-packets">
+
+            </div>
+        </div>
+        <button id="btn-logout">Log out</button>
+    </div>
+
+    <script type="module" src="js/profile.js"></script>
+</body>
+</html>

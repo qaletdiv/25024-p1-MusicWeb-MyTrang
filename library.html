@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <a href="index.html" id="logo-image"><img src="assets/logo/logo.png" alt="Music Player"></a>
+            <a href="index.html" id="main-page">Home</a>
+            <a href="library.html" id="library">Library</a>
+            <a href="trending.html" id="trending-page">Trending</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="What song for today?...">
+        </div>
+        <div id="auth-area"></div>
+    </header>
+
+    <main id="app">
+        <section id="trending">
+            <h2>Favorites</h2>
+            <div id="song-list">
+                No melodies added yet!
+            </div>
+        </section>
+    </main>
+    <div id="player-bar" class="current-song-info" style="display: none;">
+        <img id="player-cover" src="" alt="">
+        <div>
+            <h4 id="player-title"></h4>
+            <p id="player-artist"></p>
+        </div>
+        <div id="toggle-player" style="display: flex;">
+            <button class="previous-btn toggle-btn">⏮</button>
+            <button class="play-pause-btn toggle-btn">⏸</button>
+            <button class="next-btn toggle-btn">⏭</button>
+        </div>
+        <div class="time-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" min="0" max="100" value="0" step="0.1">
+            <span id="duration-time">0:00</span>
+        </div>
+        <input type="range" id="volume-bar" min="0" max="1" value="1" step="0.05">
+    </div>
+
+    <footer>
+        <a href="aboutUs.html">About us</a>
+        <span><strong>Email: </strong>hoangtrang555htm@gmail.com</span>
+    </footer>
+
+    <script type="module" src="js/storage.js"></script>
+    <script type="module" src="js/library.js"></script>
+    <audio id="main-audio" src=""></audio>
+</body>
+
+</html>

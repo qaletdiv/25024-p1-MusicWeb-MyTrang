@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <a href="index.html" id="logo-image"><img src="assets/logo/logo.png" alt="Music Player"></a>
+            <a href="index.html" id="main-page">Home</a>
+            <a href="library.html" id="library">Library</a>
+            <a href="trending.html" id="trending-page">Trending</a>
+        </nav>
+
+        <div id="auth-area"></div>
+    </header>
+
+    <main>
+        <section id="premium-plans">
+            <h2>Choose your Premium packets!</h2>
+            <div class="plans-container" style="display: flex; gap: 20px; justify-content: center;">
+                <div class="plan-card">
+                    <h3>Personal packet</h3>
+                    <p class="price">$3<span>/month</span></p>
+                    <ul>
+                        <li>Listening to music without advertisment</li>
+                        <li>Download music offline</li>
+                        <li>Lossless quality</li>
+                    </ul>
+                    <button class="select-plan-btn" data-plan="personal" data-price="$3">Choose this packet</button>
+                </div>
+                <div class="plan-card">
+                    <h3>Family packet</h3>
+                    <p class="price">$10<span>/month</span></p>
+                    <ul>
+                        <li>Listening to music without advertisment</li>
+                        <li>Download music offline</li>
+                        <li>Lossless quality</li>
+                        <li>Sharing playlist with members</li>
+                    </ul>
+                    <button class="select-plan-btn" data-plan="family" data-price="$10">Choose this packet</button>
+                </div>
+                <div class="plan-card">
+                    <h3>Pro packet</h3>
+                    <p class="price">$30<span>/month</span></p>
+                    <ul>
+                        <li>Listening to music without advertisment</li>
+                        <li>Download music offline</li>
+                        <li>Lossless quality</li>
+                        <li>Sharing playlist with members</li>
+                        <li>Michel Jackson's phone number</li>
+                    </ul>
+                    <button class="select-plan-btn" data-plan="pro" data-price="$30">Choose this packet</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/premium.js"></script>
+</body>
+</html>
