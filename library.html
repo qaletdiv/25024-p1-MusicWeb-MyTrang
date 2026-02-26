@@ -70,16 +70,17 @@
     <script type="module" src="js/storage.js"></script>
     <script type="module" src="js/library.js"></script>
     <audio id="main-audio" src=""></audio>
+
+    <div id="add-song-modal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 400px; max-height: 500px; overflow-y: auto;">
+            <h3>Select from your Favorites</h3>
+            <p style="font-size: 0.8rem; margin-bottom: 15px;">Only songs in your Library are shown here</p>
+            <div id="fav-songs-to-add">
+            </div>
+            <button id="close-add-modal" style="margin-top: 20px; width: 100%; padding: 10px;">Close</button>
+        </div>
+    </div>
 </body>
 
 </html>
 
-<div id="add-song-modal" class="modal" style="display: none;">
-    <div class="modal-content" style="max-width: 400px; max-height: 500px; overflow-y: auto;">
-        <h3>Select from your Favorites</h3>
-        <p style="font-size: 0.8rem; margin-bottom: 15px;">Only songs in your Library are shown here</p>
-        <div id="fav-songs-to-add">
-        </div>
-        <button id="close-add-modal" style="margin-top: 20px; width: 100%; padding: 10px;">Close</button>
-    </div>
-</div>
