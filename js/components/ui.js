@@ -1,6 +1,8 @@
+export function renderSongs(listSong, containerId = 'song-list') {
+    const songListContainer = document.getElementById(containerId);
+    
+    if (!songListContainer) return; 
 
-export function renderSongs(listSong){
-    const songListContainer = document.getElementById('song-list');
     let htmlContent = "";
     listSong.forEach(song => {
         htmlContent += `

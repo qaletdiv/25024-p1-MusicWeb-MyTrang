@@ -22,10 +22,19 @@
 
     <main id="app">
         <section id="home">
-            <h2>Today's songs</h2>
-            <div id="song-list">
+            <div id="categories-wrapper">
+                <h2>Pop Music</h2>
+                <div id="pop-list" class="song-list-container"></div>
 
+                <h2>Rock Music</h2>
+                <div id="rock-list" class="song-list-container"></div>
+
+                <h2>Vietnamese Songs</h2>
+                <div id="vn-list" class="song-list-container"></div>
             </div>
+
+            <h2 id="title-search" style="display: none;">Search Results</h2>
+            <div id="search-results-list" class="song-list-container"></div>
         </section>
     </main>
     <div id="player-bar" class="current-song-info" style="display: none;">

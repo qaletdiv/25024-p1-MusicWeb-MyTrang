@@ -1,4 +1,3 @@
-
 const mainAudio = document.getElementById('main-audio');
 let currentSongId = null;
 
@@ -14,7 +13,7 @@ export function getSongsForUI(allSongs) {
 export function saveUserStatus(updatedUser) {
     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userIndex = users.findIndex(u => u.id === updatedUser.id);
+    const userIndex = users.findIndex(u => String(u.id) === String(updatedUser.id));
     if (userIndex !== -1) {
         users[userIndex] = updatedUser;
         localStorage.setItem('users', JSON.stringify(users));
@@ -23,24 +22,42 @@ export function saveUserStatus(updatedUser) {
 
 export function playSong(id) {
     const songsList = JSON.parse(localStorage.getItem('songs')) || [];
-    const song = songsList.find(s => s.id == id);
+    const song = songsList.find(s => String(s.id) === String(id));
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     if (song && mainAudio) {
-        if (song.isPremium && (!currentUser || currentUser.role !== 'premium')) {
-            alert("You need to be a premium member to play this song!");
-            return;
-        }
         currentSongId = id;
-        song.views = (song.views || 0) + 1;
-        localStorage.setItem('songs', JSON.stringify(songsList));
-        mainAudio.src = song.src;
-        mainAudio.play();
+        const clickedCard = document.querySelector(`.song-card[data-id="${id}"]`);
+        if (clickedCard) {
+            const parentContainer = clickedCard.parentElement;
+            if (parentContainer) {
+                const siblingCards = parentContainer.querySelectorAll('.song-card');
+                const queueIds = Array.from(siblingCards).map(card => card.dataset.id);
+                localStorage.setItem('currentQueue', JSON.stringify(queueIds));
+            }
+        } else if (!localStorage.getItem('currentQueue')) {
+            localStorage.setItem('currentQueue', JSON.stringify(songsList.map(s => String(s.id))));
+        }
+
         document.getElementById('player-cover').src = song.cover;
         document.getElementById('player-cover').style.display = "inline";
         document.getElementById('player-title').innerText = song.title;
         document.getElementById('player-artist').innerText = song.artist;
         document.getElementById('player-bar').style.display = "flex";
+
+        if (song.isPremium && (!currentUser || currentUser.role !== 'premium')) {
+            alert("You need to be a premium member to play this song!");
+            mainAudio.pause();
+            return;
+        }
+
+        song.views = (song.views || 0) + 1;
+        localStorage.setItem('songs', JSON.stringify(songsList));
+        mainAudio.src = song.src;
+        mainAudio.play();
+        
+        let playPauseBtn = document.querySelector(".play-pause-btn");
+        if (playPauseBtn) playPauseBtn.innerText = "⏸";
     }
 }
 
@@ -96,7 +113,11 @@ export function checkLoginStatus() {
             </span>
         `;
         if (!isPremium) document.getElementById('btn-upgrade')?.addEventListener('click', upgradeAccount);
+        
         document.getElementById('btn-logout')?.addEventListener('click', () => {
+            const currentU = JSON.parse(localStorage.getItem('currentUser'));
+            if(currentU) saveUserStatus(currentU);
+            
             localStorage.removeItem('currentUser');
             window.location.reload();
         });
@@ -110,35 +131,31 @@ if(mainAudio){
         playNextSong();
     });
 }
-
 function playNextSong(){
     const songsList = JSON.parse(localStorage.getItem('songs'));
+    const queueIds = JSON.parse(localStorage.getItem('currentQueue')) || songsList.map(s => String(s.id));
 
-    const currentSongIndex = songsList.findIndex(s => s.id == currentSongId);
+    const currentSongIndex = queueIds.findIndex(id => String(id) === String(currentSongId));
     let nextIndex = currentSongIndex + 1;
-    if(nextIndex >= songsList.length){
+    if(nextIndex >= queueIds.length){
         nextIndex = 0;
     }
 
-    const nextSong = songsList[nextIndex];
-    if(nextSong)
-        playSong(nextSong.id);
+    const nextSongId = queueIds[nextIndex];
+    if(nextSongId) playSong(nextSongId);
 }
-
-
-
 function playPreviousSong(){
     const songsList = JSON.parse(localStorage.getItem('songs'));
+    const queueIds = JSON.parse(localStorage.getItem('currentQueue')) || songsList.map(s => String(s.id));
 
-    const currentSongIndex = songsList.findIndex(s => s.id == currentSongId);
+    const currentSongIndex = queueIds.findIndex(id => String(id) === String(currentSongId));
     let preIndex = currentSongIndex - 1;
     if(preIndex < 0 ){
-        preIndex = songsList.length - 1;
+        preIndex = queueIds.length - 1;
     }
 
-    const preSong = songsList[preIndex];
-    if(preSong)
-        playSong(preSong.id);
+    const preSongId = queueIds[preIndex];
+    if(preSongId) playSong(preSongId);
 }
 
 const togglePlayer = document.getElementById('toggle-player');
@@ -166,4 +183,17 @@ if(togglePlayer){
             }
         }
     })
+}
+
+const globalSearchInput = document.getElementById('search-input');
+if (globalSearchInput) {
+    globalSearchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); 
+            const keyword = globalSearchInput.value.trim();
+            if (!window.location.pathname.includes('trending.html')) {
+                window.location.href = `trending.html?q=${encodeURIComponent(keyword)}`;
+            }
+        }
+    });
 }

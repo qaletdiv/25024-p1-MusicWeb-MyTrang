@@ -1,6 +1,5 @@
 import { getUsers, saveUsers } from "./storage.js";
 
-
 const users = getUsers();
 
 const username = document.getElementById('reg-username');
@@ -10,35 +9,42 @@ const confirmPass = document.getElementById('reg-confirm-password');
 const notify = document.getElementById('notify');
 const btnSubmit = document.getElementById('btn-reg-submit');
 
-btnSubmit.addEventListener('click',(e) =>{
+btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
-    const findEmail = users.find(u => u.email == email.value);
-    if(findEmail){
-        notify.innerText = "Email already exist!";
-        return;
+    const valUsername = username.value.trim();
+    const valEmail = email.value.trim();
+    const valPass = pass.value.trim();
+    const valConfirm = confirmPass.value.trim();
+    if (!valUsername || !valEmail || !valPass || !valConfirm) {
+        notify.style.color = "red";
+        notify.innerText = "Please fill in all fields!";
+        return; 
     }
-    else{
-        if(pass.value !== confirmPass.value){
-            notify.innerText= "Passwords do not match!";
+    const findEmail = users.find(u => u.email == valEmail);
+    if (findEmail) {
+        notify.style.color = "red";
+        notify.innerText = "Email already exists!";
+        return;
+    } 
+    else {
+        if (valPass !== valConfirm) {
+            notify.style.color = "red";
+            notify.innerText = "Passwords do not match!";
             return;
         }
-        
         const newUser = {
             id: Date.now(),
-            username: username.value,
-            email: email.value,
-            password: pass.value,
+            username: valUsername,
+            email: valEmail,
+            password: valPass, 
             role: 'user',
         }
-
         users.push(newUser);
         saveUsers(users);
-
+        notify.style.color = "green";
         notify.innerText = "Register successfully! Redirecting ...";
-
-        setTimeout(() =>{
+        setTimeout(() => {
             window.location.href = "login.html";
         }, 2000);
     }
 });
-
