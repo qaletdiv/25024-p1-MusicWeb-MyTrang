@@ -25,12 +25,13 @@
 
             </div>
             <form id="payment-form">
-                <input type="text" id="card-name" placeholder="Card name" required>
+                <input type="text" id="card-name" placeholder="Card name (e.g., NGUYEN VAN A)" required>
                 <input type="text" id="card-number" placeholder="Card number (16 numbers)" required>
                 <div style="display: flex; gap: 10px;">
-                    <input type="text" placeholder="MM/YY" required>
-                    <input type="text" placeholder="CVV" required>
+                    <input type="text" id="exp-date" placeholder="MM/YY" required>
+                    <input type="password" id="cvv" placeholder="CVV" required>
                 </div>
+                <p id="checkout-error" style="color: #e74c3c; font-size: 0.9rem; margin-top: 10px; font-weight: bold;"></p>
                 <button type="submit">Confirm payment</button>
             </form>
         </div>
