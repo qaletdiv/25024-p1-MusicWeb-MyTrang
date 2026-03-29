@@ -115,3 +115,83 @@ if (song) {
     alert("Song not found!");
     window.location.href = 'index.html';
 }
+
+const btnAddToPl = document.getElementById('btn-add-to-pl');
+const plModal = document.getElementById('playlist-modal');
+const closePlModal = document.getElementById('close-pl-modal');
+const plContainer = document.getElementById('user-playlists-container');
+
+if (btnAddToPl) {
+    btnAddToPl.addEventListener('click', () => {
+        const freshUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!freshUser) {
+            alert("You have to log in first!");
+            return;
+        }
+        
+        plModal.style.display = 'flex';
+        renderPlaylistOptions(freshUser);
+    });
+}
+
+function renderPlaylistOptions(user) {
+    if (!user.playlists || user.playlists.length === 0) {
+        plContainer.innerHTML = "<p style='color: var(--text-gray); font-size: 0.9rem; text-align: center;'>You don't have any playlists yet.</p>";
+        return;
+    }
+
+    let html = "";
+    user.playlists.forEach(pl => {
+        const isAdded = pl.songs.includes(String(songId));
+        html += `
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; background: #282828; border-radius: 5px;">
+                <span style="font-size: 0.9rem;">${pl.name}</span>
+                <button class="toggle-pl-btn" data-plid="${pl.id}" style="background: ${isAdded ? 'var(--primary-color)' : 'transparent'}; border: 1px solid ${isAdded ? 'var(--primary-color)' : 'var(--text-gray)'}; color: white; padding: 4px 10px; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
+                    ${isAdded ? 'Added' : 'Add'}
+                </button>
+            </div>
+        `;
+    });
+    plContainer.innerHTML = html;
+}
+
+document.getElementById('btn-create-new-pl')?.addEventListener('click', () => {
+    const plName = prompt("Enter new playlist name:");
+    if (plName) {
+        const freshUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!freshUser.playlists) freshUser.playlists = [];
+        freshUser.playlists.push({
+            id: Date.now(),
+            name: plName,
+            songs: [String(songId)]
+        });
+        saveUserStatus(freshUser);
+        alert(`Playlist "${plName}" created and song added!`);
+        renderPlaylistOptions(freshUser);
+    }
+});
+
+plContainer?.addEventListener('click', (e) => {
+    if (e.target.classList.contains('toggle-pl-btn')) {
+        const plId = e.target.dataset.plid;
+        const freshUser = JSON.parse(localStorage.getItem('currentUser'));
+        const targetPl = freshUser.playlists.find(p => String(p.id) === String(plId));
+        
+        if (targetPl) {
+            const songIndex = targetPl.songs.indexOf(String(songId));
+            if (songIndex === -1) {
+                targetPl.songs.push(String(songId));
+            } else {
+                targetPl.songs.splice(songIndex, 1);
+            }
+            saveUserStatus(freshUser);
+            renderPlaylistOptions(freshUser);
+        }
+    }
+});
+
+if (closePlModal) {
+    closePlModal.addEventListener('click', () => {
+        plModal.style.display = 'none';
+    });
+}

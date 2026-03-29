@@ -13,12 +13,12 @@ const allSongs = JSON.parse(localStorage.getItem('songs')) || [];
 function getFavoriteSongs() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const favorites = currentUser?.favorites || [];
-    return allSongs.filter(song => favorites.includes(String(song.id)));
+    return allSongs.filter(song => (favorites || []).includes(String(song.id)));
 }
 
 let favSongsRender = getFavoriteSongs();
 //render fav songs
-renderSongs(getSongsForUI(favSongsRender));
+renderSongs(getSongsForUI(favSongsRender), 'song-list');
 
 //play song || toggle the fav heart
 let songList = document.getElementById('song-list');
@@ -42,7 +42,7 @@ songList.addEventListener('click', (e) => {
         }
         return;
     }
-
+    if (e.target.classList.contains('detail-link')) return;
     if (clickedCard) {
         const songId = clickedCard.dataset.id;
         playSong(songId);
@@ -71,7 +71,7 @@ function toggleFavorite(id) {
 
     saveUserStatus(currentUser);
     favSongsRender = getFavoriteSongs();
-    renderSongs(getSongsForUI(favSongsRender));
+    renderSongs(getSongsForUI(favSongsRender), 'song-list');
 }
 
 
@@ -88,7 +88,7 @@ if (searchInput) {
             s.artist.toLowerCase().includes(searchTerm)
         );
 
-        renderSongs(getSongsForUI(searchFilter));
+        renderSongs(getSongsForUI(searchFilter), 'song-list');
     });
 }
 
@@ -191,8 +191,7 @@ function openAddSongToPlaylistModal() {
     const container = document.getElementById('fav-songs-to-add');
     const user = JSON.parse(localStorage.getItem('currentUser'));
     const allSongs = JSON.parse(localStorage.getItem('songs')) || [];
-    const favorites = allSongs.filter(s => user.favorites?.includes(String(s.id)));
-
+    const favorites = allSongs.filter(s => (user.favorites || []).includes(String(s.id)));
     if (favorites.length === 0) {
         alert("Your Library is empty! Go like some songs first.");
         return;
@@ -226,13 +225,19 @@ document.getElementById('fav-songs-to-add')?.addEventListener('click', (e) => {
         const user = JSON.parse(localStorage.getItem('currentUser'));
         const playlist = user.playlists.find(p => p.id == currentTargetPlaylistId);
         
-        if (playlist && !playlist.songs.includes(songId)) {
-            playlist.songs.push(songId);
-            saveUserStatus(user);
-            alert("Added!");
-            renderPlaylists();
-        } else {
-            alert("This song is already in the playlist!");
+        if (playlist) {
+            if (!playlist.songs.includes(String(songId))) {
+                playlist.songs.push(String(songId));
+                saveUserStatus(user);
+                alert("Added!");
+                renderPlaylists();
+                const titleEl = document.querySelector('.lib-block h2');
+                if (titleEl && titleEl.innerText.includes(playlist.name)) {
+                    viewPlaylistSongs(currentTargetPlaylistId);
+                }
+            } else {
+                alert("This song is already in the playlist!");
+            }
         }
     }
 });
@@ -243,32 +248,36 @@ document.getElementById('close-add-modal')?.addEventListener('click', () => {
 
 function viewPlaylistSongs(playlistId) {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    const allSongs = JSON.parse(localStorage.getItem('songs')) || [];
     const playlist = user.playlists.find(p => p.id == playlistId);
     
     if (playlist) {
         const filteredSongs = allSongs.filter(s => playlist.songs.includes(String(s.id)));
         const songListContainer = document.getElementById('song-list');
         const titleEl = document.querySelector('.lib-block h2');
+        
         if (titleEl) {
             titleEl.innerText = `Playlist: ${playlist.name}`;
             document.getElementById('back-to-fav')?.remove();
+            songListContainer.className = "song-list-container"; 
+            
             let htmlContent = "";
             filteredSongs.forEach(song => {
                 htmlContent += `
                     <div class="song-card" data-id="${song.id}" style="position: relative;">
                         <div class="song-cover">
-                            <img src="${song.cover}" alt="${song.title}">
+                            <img src="${song.cover}" alt="${song.title}" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
                             <button class="btn-remove-from-pl" data-songid="${song.id}" data-plid="${playlistId}" style="position: absolute; top: 5px; right: 5px; background: rgba(231, 76, 60, 0.9); border: none; color: white; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; z-index: 10;">X</button>
+                            <button class="btn-play-mini">▶</button>
                         </div>
                         <div class="song-info">
-                            <h3>${song.title}</h3>
-                            <p>${song.artist}</p>
+                            <h3><a href="detail.html?id=${song.id}" class="detail-link" style="text-decoration: none; color: white;">${song.title}</a></h3>
+                            <p style="color: #b3b3b3; font-size: 0.85rem;">${song.artist}</p>
                         </div>
                     </div>
                 `;
             });
-            songListContainer.innerHTML = htmlContent || "<p>No songs in this playlist.</p>";
+            songListContainer.innerHTML = htmlContent || "<p style='grid-column: 1/-1;'>No songs in this playlist.</p>";
+            
             const backBtn = document.createElement('button');
             backBtn.id = "back-to-fav";
             backBtn.innerText = "← Back to Favorites";
