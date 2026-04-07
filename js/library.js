@@ -117,7 +117,7 @@ function checkDownloadAccess() {
         downloadList.innerHTML = `<p>Feature only for <a href="premium.html">Premium users</a>.</p>`;
     } else {
         let text = '';
-        const downloadedSongs = allSongs.filter(song => currentUser.downloadedSongs.includes(String(song.id)));
+        const downloadedSongs = allSongs.filter(song => (currentUser.downloadedSongs.includes(String(song.id) || [])));
         downloadedSongs?.forEach(song => {
             text += `
                 <div class="song-card" data-id="${song.id}" style="background-color: rbga(0,0,0, 0.5)!important; display: flex; justify-content: space-around; gap: 10px;">
@@ -152,7 +152,7 @@ function renderPlaylists() {
                     <strong class="playlist-name" data-id="${pl.id}" style="cursor: pointer;">📂 ${pl.name}</strong>
                     <div>
                         <button class="btn-add-music" data-id="${pl.id}">+ Add</button>
-                        <button class="btn-delete" data-index="${index}">Delete</button>
+                        <button class="btn-delete" data-index="${index}">- Delete</button>
                     </div>
                 </div>
                 <small>${pl.songs.length} songs</small>
@@ -180,6 +180,7 @@ document.getElementById('playlist-list')?.addEventListener('click', (e) => {
             user.playlists.splice(plIndex, 1);
             saveUserStatus(user);
             renderPlaylists();
+            location.reload();
         }
     }
 });
